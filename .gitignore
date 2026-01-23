@@ -21,3 +21,16 @@ package-lock.json
 
 # Ignore files created by MacOS
 .DS_Store
+
+# Visual Studio
+.vs/
+CopilotIndices/
+FileContentIndex/
+
+# Databases / caches
+*.db
+*.sqlite
+
+# OS junk
+.DS_Store
+Thumbs.db
