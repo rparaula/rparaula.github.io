@@ -15,7 +15,7 @@ Resume
 ======
 [Download my paper (PDF)]({{ rparaula.github.io }}/files/Resume.pdf)
 
-<a href="{{ rparaula.github.io }}/files/my_paper.pdf">
+<a href="{{ rparaula.github.io }}/files/Resume.pdf">
   <img src="{{ rparaula.github.io }}/images/ResumeThumb.png" alt="My paper PDF" style="max-width:250px;">
 </a>
 
