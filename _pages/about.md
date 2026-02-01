@@ -9,7 +9,7 @@ redirect_from:
 
 A computer science major, studying at the University of Houston, who is very interested in getting his foothold in the field of Data & Analytics. 
 
-Whether it be creating dashboards/reports from existing data, maintaining a data warehouse or lakehouse, or experimenting with various machine learning models, I'm always interested in learning something new for my career every day.
+Whether it be creating dashboards/reports from existing data, maintaining a data warehouse or lakehouse, or experimenting with various machine learning models. I'm always interested in learning something new for my career every day.
 
 Resume
 ======
