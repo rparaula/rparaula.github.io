@@ -44,36 +44,42 @@
 
 
 
-/* 1) Put the background on the whole left column */
+/* 1) Put the background on the actual left column */
 .sidebar.sticky {
-    position: relative;
+    position: sticky; /* keep the theme behavior */
+    top: 65px; /* matches your existing padding-top/header offset */
+    height: calc(100vh - 65px); /* fill the rest of the viewport */
+    overflow: hidden;
     background-image: url("{{ '/images/bg/SunsetAboutMe.jpg' | relative_url }}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* make it fill the viewport height */
-    min-height: calc(100vh - 65px); /* 65px matches your header offset */
-    border-radius: 0; /* full column look */
 }
 
-/* 2) Add an overlay so text/icons stay readable */
+/* 2) Overlay for readability */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35); /* default (light mode) */
+    background: rgba(0,0,0,0.35);
     z-index: 0;
 }
 
-/* 3) Ensure all sidebar content renders above the overlay */
+/* 3) Keep sidebar content above the overlay */
 .sidebar.sticky > * {
     position: relative;
     z-index: 1;
 }
 
-/* 4) Dark mode overlay override (since your site only adds data-theme in dark mode) */
+/* 4) Dark mode overlay (your site only sets data-theme in dark mode) */
 html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0,0,0,0.55);
 }
 
-
+/* 5) Make inner cards transparent so the background shows through */
+.sidebar .author__avatar,
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+    background: transparent !important;
+    box-shadow: none !important;
+}
