@@ -60,6 +60,11 @@
     border-radius: 18px;
     /* ensure overlay works correctly */
     z-index: 1;
+    /* full-bleed to the left */
+    margin-left: calc(50% - 50vw);
+    padding-left: calc(50vw - 50% + 1.25rem);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 /* Overlay for readability */
