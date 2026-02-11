@@ -44,41 +44,45 @@
 
 
 
-/* 1) Put the background on the actual left column */
+/* Full-height left sidebar background WITHOUT breaking layout */
 .sidebar.sticky {
-    position: sticky; /* keep the theme behavior */
-    top: 65px; /* matches your existing padding-top/header offset */
-    height: calc(100vh - 65px); /* fill the rest of the viewport */
-    overflow: hidden;
-    background-image: url("{{ '/images/bg/SunsetAboutMe.jpg' | relative_url }}");
+    /* keep template behavior */
+    position: sticky;
+    top: 65px; /* matches your header offset */
+    /* make it fill the viewport height while stuck */
+    max-height: calc(100vh - 65px);
+    overflow: auto;
+    /* background image */
+    background-image: url("{{ '/images/bg/SunriseAboutMe.jpg' | relative_url }}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-left: calc(50% - 50vw);
-    padding-left: calc(50vw - 50%);
+    /* optional: soften edges */
+    border-radius: 12px;
 }
 
-/* 2) Overlay for readability */
+/* Overlay for readability */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.35);
+    pointer-events: none;
     z-index: 0;
 }
 
-/* 3) Keep sidebar content above the overlay */
+/* Dark mode overlay */
+html[data-theme="dark"] .sidebar.sticky::before {
+    background: rgba(0,0,0,0.55);
+}
+
+/* Ensure sidebar content stays above overlay */
 .sidebar.sticky > * {
     position: relative;
     z-index: 1;
 }
 
-/* 4) Dark mode overlay (your site only sets data-theme in dark mode) */
-html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0,0,0,0.55);
-}
-
-/* 5) Make inner cards transparent so the background shows through */
+/* Remove inner card backgrounds so image shows through */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
