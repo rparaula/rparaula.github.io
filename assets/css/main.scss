@@ -47,7 +47,7 @@
 /* 1) Put the background on the whole left column */
 .sidebar.sticky {
     position: relative;
-    background-image: url("{{ '/images/sidebar-bg.jpg' | relative_url }}");
+    background-image: url("{{ '/images/bg/SunsetAboutMe.jpg' | relative_url }}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
