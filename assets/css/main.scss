@@ -45,24 +45,25 @@
 /* -------------------------
    Top navigation (masthead)
    ------------------------- */
-
-/* ===== Force the IMAGE onto the masthead using shorthand ===== */
-.masthead {
-    background: var(--shared-bg) center / cover no-repeat !important;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* ===== Shared background image ===== */
+:root {
+    --shared-bg: url("/images/bg/SunriseAboutMe.jpg");
 }
 
-/* Make sure inner wrappers don't paint over it */
-.masthead__inner-wrap,
+/* ===== Apply image directly to the visible nav bar ===== */
 .greedy-nav {
-    background: transparent !important; /* shorthand beats theme shorthand */
-    background-color: transparent !important;
+    background: var(--shared-bg) center / cover no-repeat !important;
+    position: relative; /* required for overlay */
 }
 
-/* Optional overlay for readability (put it on masthead itself) */
-.masthead::after {
+/* Remove theme wrapper backgrounds */
+.masthead,
+.masthead__inner-wrap {
+    background: transparent !important;
+}
+
+/* Optional overlay for readability */
+.greedy-nav::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -70,9 +71,10 @@
     pointer-events: none;
 }
 
-html[data-theme="dark"] .masthead::after {
+html[data-theme="dark"] .greedy-nav::after {
     background: rgba(0,0,0,0.45);
 }
+
 
 /* -------------------------
    Sidebar (left column)
