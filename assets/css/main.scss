@@ -46,28 +46,31 @@
 /* Make sure the sidebar never slides under the nav */
 .sidebar.sticky {
     position: sticky;
-    top: 90px; /* use a larger offset than 65px to clear the navbar safely */
-    /* fill viewport height while stuck */
+    top: 90px;
     max-height: calc(100vh - 90px);
     overflow: auto;
-    /* FULL background */
+    /* LIGHT MODE background */
     background-image: url("/images/bg/SunriseAboutMe.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* extend visually */
     padding: 1.25rem;
     border-radius: 18px;
-    /* ensure overlay works correctly */
     z-index: 1;
 }
 
-/* Overlay for readability */
+/* DARK MODE background image override */
+html[data-theme="dark"] .sidebar.sticky {
+    background-image: url("/images/bg/SunsetAboutMe.jpg");
+}
+
+
+/* Overlay for readability (light mode default) */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.10); /* light mode overlay */
+    background: rgba(255,255,255,0.10);
     pointer-events: none;
     z-index: 0;
 }
