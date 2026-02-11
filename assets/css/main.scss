@@ -46,30 +46,57 @@
 /* Make sure the sidebar never slides under the nav */
 .sidebar.sticky {
     position: sticky;
-    top: 90px; /* use a larger offset than 65px to clear the navbar safely */
-    /* fill viewport height while stuck */
-    max-height: calc(100vh - 90px);
+    top: 65px; /* matches your header spacing */
+    height: calc(100vh - 65px); /* fills screen under nav */
     overflow: auto;
-    /* FULL background */
-    background-image: url("/images/bg/SunriseAboutMe.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* extend visually */
-    padding: 1.25rem;
-    border-radius: 18px;
-    /* ensure overlay works correctly */
+    position: sticky;
     z-index: 1;
+    /* IMPORTANT for pseudo-elements */
+    position: sticky;
+}
+
+/* Make sure it’s a positioned container for ::before/::after */
+.sidebar.sticky { position: sticky; }
+.sidebar.sticky { position: -webkit-sticky; } /* optional safari help */
+.sidebar.sticky { position: sticky; }         /* keep */
+
+.sidebar.sticky {
+  position: sticky;
+  top: 65px;
+  height: calc(100vh - 65px);
+  overflow: auto;
+  z-index: 1;
+  /* key */
+  position: sticky;
 }
 
 /* Overlay for readability */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.10); /* light mode overlay */
-    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    /* full-bleed math applies to the BACKGROUND ONLY */
+    left: calc(-1 * (50vw - 50%));
+    width: calc(100% + (50vw - 50%));
+    background-image: url("/images/bg/SunriseAboutMe.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 0;
+    pointer-events: none;
+}
+
+.sidebar.sticky::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * (50vw - 50%));
+    width: calc(100% + (50vw - 50%));
+    background: rgba(255, 255, 255, 0.10); /* light mode */
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Dark mode overlay */
@@ -80,7 +107,7 @@ html[data-theme="dark"] .sidebar.sticky::before {
 /* Put sidebar contents above overlay */
 .sidebar.sticky > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 /* Let the image show through the inner cards */
