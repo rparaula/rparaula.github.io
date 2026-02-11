@@ -43,126 +43,47 @@
 ;
 
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* Make sidebar background extend to the left edge only */
+/* Make sure the sidebar never slides under the nav */
 .sidebar.sticky {
+    position: sticky;
+    top: 90px; /* use a larger offset than 65px to clear the navbar safely */
+    /* fill viewport height while stuck */
+    max-height: calc(100vh - 90px);
+    overflow: auto;
+    /* FULL background */
     background-image: url("/images/bg/SunriseAboutMe.jpg");
-=======
-/* ---- SETTINGS: match your site ---- */
-:root {
-    --nav-h: 65px; /* height of top nav */
-    --footer-h: 0px; /* set later if you want to stop above footer */
-    --left-strip-w: 360px; /* tweak to match your sidebar column area */
-}
-
-/* 1) Fixed background strip on the LEFT side only */
-body::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: var(--nav-h);
-    width: var(--left-strip-w);
-    height: calc(100vh - var(--nav-h) - var(--footer-h));
-    background-image: url("/images/bg/SunriseAboutMe.jpg"); /* or your correct path */
->>>>>>> parent of b861842 (^)
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 0; /* behind everything */
-    pointer-events: none; /* don't block clicks */
+    /* extend visually */
+    padding: 1.25rem;
+    border-radius: 18px;
+    /* ensure overlay works correctly */
+    z-index: 1;
 }
 
-/* 2) Overlay strip for readability */
-body::after {
+/* Overlay for readability */
+.sidebar.sticky::before {
     content: "";
-    position: fixed;
-    left: 0;
-    top: var(--nav-h);
-    width: var(--left-strip-w);
-    height: calc(100vh - var(--nav-h) - var(--footer-h));
-    background: rgba(255,255,255,0.15); /* light mode default overlay */
-    z-index: 0;
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.10); /* light mode overlay */
     pointer-events: none;
+    z-index: 0;
 }
 
-/* 3) Dark mode overlay */
-html[data-theme="dark"] body::after {
+/* Dark mode overlay */
+html[data-theme="dark"] .sidebar.sticky::before {
     background: rgba(0,0,0,0.45);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* Make inner cards transparent so the image shows through */
-=======
-/* ---- SETTINGS: match your site ---- */
-:root {
-    --nav-h: 65px; /* height of top nav */
-    --footer-h: 0px; /* set later if you want to stop above footer */
-    --left-strip-w: 360px; /* tweak to match your sidebar column area */
-}
-
-/* 1) Fixed background strip on the LEFT side only */
-body::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: var(--nav-h);
-    width: var(--left-strip-w);
-    height: calc(100vh - var(--nav-h) - var(--footer-h));
-    background-image: url("/images/sidebar-bg.jpg"); /* or your correct path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0; /* behind everything */
-    pointer-events: none; /* don't block clicks */
-}
-
-/* 2) Overlay strip for readability */
-body::after {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: var(--nav-h);
-    width: var(--left-strip-w);
-    height: calc(100vh - var(--nav-h) - var(--footer-h));
-    background: rgba(255,255,255,0.15); /* light mode default overlay */
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* 3) Dark mode overlay */
-html[data-theme="dark"] body::after {
-    background: rgba(0,0,0,0.45);
-}
-
-/* 4) Ensure main layout content renders above strip */
-#main, .masthead, .page__footer {
-=======
 /* Put sidebar contents above overlay */
 .sidebar.sticky > * {
->>>>>>> parent of 4b194d8 (^)
-=======
-/* 4) Ensure main layout content renders above strip */
-#main, .masthead, .page__footer {
->>>>>>> parent of b861842 (^)
     position: relative;
     z-index: 1;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* 5) Make the sidebar itself transparent so the strip shows through */
-.sidebar.sticky,
->>>>>>> parent of b861842 (^)
-=======
 /* Let the image show through the inner cards */
->>>>>>> parent of 4b194d8 (^)
-=======
-/* 5) Make the sidebar itself transparent so the strip shows through */
-.sidebar.sticky,
->>>>>>> parent of b861842 (^)
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
