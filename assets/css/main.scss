@@ -45,49 +45,53 @@
 
 
 /* Make sidebar background extend to the left edge only */
+/* Keep the theme layout intact */
 .sidebar.sticky {
-    position: relative;
+    position: sticky; /* keep AcademicPages behavior */
+    top: 90px; /* adjust (65–110) so it never touches nav */
+    z-index: 1; /* make sure it's above the background layer */
+}
+
+/* Full-bleed BACKGROUND ONLY (does not affect layout) */
+.sidebar.sticky::before {
+    content: "";
+    position: fixed; /* stays put while scrolling */
+    left: 0;
+    top: 90px; /* same as sticky top */
+    bottom: 0; /* reaches the bottom of viewport */
+    width: 33vw; /* controls how wide the left image area is */
+
     background-image: url("/images/bg/SunriseAboutMe.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    top: 90px;
-    max-height: calc(100vh - 90px);
-    overflow: auto;
-    /* full-bleed to the left */
-    margin-left: calc(50% - 50vw);
-    padding-left: calc(50vw - 50% + 1.25rem);
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    z-index: -1; /* sit behind sidebar content */
+    pointer-events: none;
 }
 
-
-
-/* Overlay for readability */
-.sidebar.sticky::before {
+/* Readability overlay (light mode) */
+.sidebar.sticky::after {
     content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.10); /* light mode overlay */
+    position: fixed;
+    left: 0;
+    top: 90px;
+    bottom: 0;
+    width: 33vw;
+    background: rgba(255,255,255,0.10);
+    z-index: -1;
     pointer-events: none;
-    z-index: 0;
 }
 
 /* Dark mode overlay */
-html[data-theme="dark"] .sidebar.sticky::before {
+html[data-theme="dark"] .sidebar.sticky::after {
     background: rgba(0,0,0,0.45);
 }
 
-/* Put sidebar contents above overlay */
-.sidebar.sticky > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Let the image show through the inner cards */
+/* Make inner cards transparent so the image shows through */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
 }
+
