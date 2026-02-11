@@ -42,20 +42,63 @@
     "vendor/font-awesome/brands"
 ;
 
-/* Light mode = when html does NOT have data-theme="dark" */
-html:not([data-theme="dark"]) .about-bg {
+/* Base (Light Mode Default) */
+.sidebar .author__content {
+    position: relative;
     background-image: url("/images/bg/SunsetAboutMe.jpg");
-}
-
-/* Dark mode */
-html[data-theme="dark"] .about-bg {
-    background-image: url("/images/bg/SunriseAboutMe.jpg");
-}
-
-/* Shared background styling */
-.about-bg {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* optional */
+    border-radius: 12px;
+    padding: 1.25rem;
+    overflow: hidden;
+}
+
+/* Light mode overlay (default) */
+.sidebar .author__content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.35); /* light overlay */
+    z-index: 0;
+}
+
+.sidebar .author__content * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Dark mode override */
+html[data-theme="dark"] .sidebar .author__content::before {
+    background: rgba(0,0,0,0.55); /* darker overlay */
+}
+/* Base (Light Mode Default) */
+.sidebar .author__content {
+    position: relative;
+    background-image: url("/images/sidebar-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    padding: 1.25rem;
+    overflow: hidden;
+}
+
+/* Light mode overlay (default) */
+.sidebar .author__content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.35); /* light overlay */
+    z-index: 0;
+}
+
+.sidebar .author__content * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Dark mode override */
+html[data-theme="dark"] .sidebar .author__content::before {
+    background: rgba(0,0,0,0.55); /* darker overlay */
 }
