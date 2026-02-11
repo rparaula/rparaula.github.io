@@ -90,39 +90,3 @@ html[data-theme="dark"] .sidebar.sticky::before {
     background: transparent !important;
     box-shadow: none !important;
 }
-
-
-
-
-
-
-
-/* Let the background show through the top nav */
-.masthead,
-.masthead__inner-wrap,
-.greedy-nav {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Add a readable overlay so text/icons stay visible */
-.masthead {
-    position: sticky; /* keeps nav behavior */
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-.masthead::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35); /* light mode overlay strength */
-    pointer-events: none;
-    z-index: -1;
-}
-
-html[data-theme="dark"] .masthead::before {
-    background: rgba(0,0,0,0.55);
-}
