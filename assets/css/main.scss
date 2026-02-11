@@ -2,7 +2,9 @@
 ---
 /*
  * This file controls what is imported from /_sass
- * The first two lines (---) are required by Jekyll.
+ *
+ * Note that the files are processed in the order they are imported, so they are partly
+ * sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
 @import
 "vendor/breakpoint/breakpoint",
@@ -31,92 +33,93 @@
 "vendor/font-awesome/brands"
 ;
 
+/* =========================================================
+   Custom overrides (place ALL custom CSS below the imports)
+   ========================================================= */
 
-/* ======================================================
-   SHARED BACKGROUND IMAGE (NAV + SIDEBAR)
-====================================================== */
-
+/* Shared background image (used by BOTH nav + sidebar) */
 :root {
     --shared-bg: url("/images/bg/SunriseAboutMe.jpg");
 }
 
-
-/* ======================================================
-   NAVIGATION BAR (Greedy Nav)
-====================================================== */
-
-/* Apply image to the actual nav element */
-nav#site-nav.greedy-nav {
-    background: var(--shared-bg) center / cover no-repeat !important;
-    position: relative;
+/* -------------------------
+   Top navigation (masthead)
+   ------------------------- */
+/* ===== Shared background image ===== */
+:root {
+    --shared-bg: url("/images/bg/SunriseAboutMe.jpg");
 }
 
-/* Remove theme background colors that hide the image */
-nav#site-nav.greedy-nav,
-nav#site-nav.greedy-nav * {
-    background-color: transparent !important;
+/* ===== Apply image directly to the visible nav bar ===== */
+.greedy-nav {
+    background: var(--shared-bg) center / cover no-repeat !important;
+    position: relative; /* required for overlay */
+}
+
+/* Remove theme wrapper backgrounds */
+.masthead,
+.masthead__inner-wrap {
+    background: transparent !important;
 }
 
 /* Optional overlay for readability */
-nav#site-nav.greedy-nav::after {
+.greedy-nav::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(255,255,255,0.08);
     pointer-events: none;
-    z-index: 0;
 }
 
-/* Ensure nav content stays above overlay */
-nav#site-nav.greedy-nav > * {
-    position: relative;
+html[data-theme="dark"] .greedy-nav::after {
+    background: rgba(0,0,0,0.45);
+}
+
+
+/* -------------------------
+   Sidebar (left column)
+   ------------------------- */
+
+.sidebar.sticky {
+    /* keep template behavior */
+    position: sticky;
+    top: 65px;
+    /* image */
+    background-image: var(--shared-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* optional: make it look like your screenshot */
+    padding: 1.25rem;
+    border-radius: 18px;
+    /* for overlay layering */
     z-index: 1;
 }
 
-
-/* ======================================================
-   SIDEBAR
-====================================================== */
-
-.sidebar.sticky {
-    position: sticky;
-    top: 65px; /* keep below navbar */
-    background: var(--shared-bg) center / cover no-repeat;
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Sidebar overlay */
+/* Overlay for readability */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(255, 255, 255, 0.10); /* light mode overlay */
     pointer-events: none;
     z-index: 0;
 }
 
-/* Keep sidebar content above overlay */
+html[data-theme="dark"] .sidebar.sticky::before {
+    background: rgba(0, 0, 0, 0.45); /* dark mode overlay */
+}
+
+/* Sidebar content above overlay */
 .sidebar.sticky > * {
     position: relative;
     z-index: 1;
 }
 
-/* Let image show through inner sidebar cards */
+/* Make inner “cards” transparent so the image shows through */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
-}
-
-
-/* ======================================================
-   LIGHT MODE ADJUSTMENTS (optional)
-====================================================== */
-
-html:not([data-theme="dark"]) nav#site-nav.greedy-nav::after,
-html:not([data-theme="dark"]) .sidebar.sticky::before {
-    background: rgba(255, 255, 255, 0.08);
 }
