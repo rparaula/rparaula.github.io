@@ -44,49 +44,50 @@
 
 
 
-/* Full-height left sidebar background WITHOUT breaking layout */
+/* 1️. Make the sidebar column full height */
 .sidebar.sticky {
-    /* keep template behavior */
-    position: sticky;
-    top: 65px; /* matches your header offset */
-    /* make it fill the viewport height while stuck */
-    max-height: calc(100vh - 65px);
-    overflow: auto;
-    /* background image */
-    background-image: url("{{ '/images/sidebar-bg.jpg' | relative_url }}");
+    position: relative; /* don't change layout positioning */
+    min-height: 100vh; /* full viewport height */
+    overflow: hidden;
+}
+
+/* 2️. Create a fixed background layer */
+.sidebar.sticky::before {
+    content: "";
+    position: fixed; /* THIS makes it stay while scrolling */
+    top: 65px; /* match your header height */
+    left: 0;
+    width: 320px; /* sidebar width — adjust if needed */
+    height: calc(100vh - 65px);
+    background-image: url("{{ '/images/bg/SunriseAboutMe.jpg' | relative_url }}");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* optional: soften edges */
-    border-radius: 12px;
-}
-
-/* Overlay for readability */
-.sidebar.sticky::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    pointer-events: none;
     z-index: 0;
 }
 
-/* Dark mode overlay */
-html[data-theme="dark"] .sidebar.sticky::before {
+/* 3. Dark mode overlay */
+html[data-theme="dark"] .sidebar.sticky::after {
+    content: "";
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 320px;
+    height: calc(100vh - 65px);
     background: rgba(0,0,0,0.55);
+    z-index: 0;
 }
 
-/* Ensure sidebar content stays above overlay */
+/* 4️. Ensure sidebar content stays above background */
 .sidebar.sticky > * {
     position: relative;
     z-index: 1;
 }
 
-/* Remove inner card backgrounds so image shows through */
+/* 5️. Remove inner card backgrounds */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
 }
-
