@@ -44,49 +44,58 @@
 
 
 
-/* Full-height left sidebar background WITHOUT breaking layout */
-.sidebar.sticky {
-    /* keep template behavior */
-    position: sticky;
-    top: 65px; /* matches your header offset */
-    /* make it fill the viewport height while stuck */
-    max-height: calc(100vh - 65px);
-    overflow: auto;
-    /* background image */
-    background-image: url("{{ '/images/bg/SunriseAboutMe.jpg' | relative_url }}");
+/* ---- SETTINGS: match your site ---- */
+:root {
+    --nav-h: 65px; /* height of top nav */
+    --footer-h: 0px; /* set later if you want to stop above footer */
+    --left-strip-w: 360px; /* tweak to match your sidebar column area */
+}
+
+/* 1) Fixed background strip on the LEFT side only */
+body::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: var(--nav-h);
+    width: var(--left-strip-w);
+    height: calc(100vh - var(--nav-h) - var(--footer-h));
+    background-image: url("/images/sidebar-bg.jpg"); /* or your correct path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* optional: soften edges */
-    border-radius: 12px;
+    z-index: 0; /* behind everything */
+    pointer-events: none; /* don't block clicks */
 }
 
-/* Overlay for readability */
-.sidebar.sticky::before {
+/* 2) Overlay strip for readability */
+body::after {
     content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: var(--nav-h);
+    width: var(--left-strip-w);
+    height: calc(100vh - var(--nav-h) - var(--footer-h));
+    background: rgba(255,255,255,0.15); /* light mode default overlay */
     z-index: 0;
+    pointer-events: none;
 }
 
-/* Dark mode overlay */
-html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0,0,0,0.55);
+/* 3) Dark mode overlay */
+html[data-theme="dark"] body::after {
+    background: rgba(0,0,0,0.45);
 }
 
-/* Ensure sidebar content stays above overlay */
-.sidebar.sticky > * {
+/* 4) Ensure main layout content renders above strip */
+#main, .masthead, .page__footer {
     position: relative;
     z-index: 1;
 }
 
-/* Remove inner card backgrounds so image shows through */
+/* 5) Make the sidebar itself transparent so the strip shows through */
+.sidebar.sticky,
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
 }
-
