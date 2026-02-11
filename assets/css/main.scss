@@ -54,6 +54,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-left: calc(50% - 50vw);
+    padding-left: calc(50vw - 50%);
 }
 
 /* 2) Overlay for readability */
@@ -83,3 +85,4 @@ html[data-theme="dark"] .sidebar.sticky::before {
     background: transparent !important;
     box-shadow: none !important;
 }
+
