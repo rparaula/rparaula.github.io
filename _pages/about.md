@@ -2,6 +2,7 @@
 permalink: /
 title: "About Me"
 author_profile: true
+classes: about-bg
 redirect_from: 
   - /about/
   - /about.html

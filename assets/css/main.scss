@@ -41,3 +41,21 @@
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands"
 ;
+
+/* Light mode = when html does NOT have data-theme="dark" */
+html:not([data-theme="dark"]) .about-bg {
+    background-image: url("/images/bg/SunsetAboutMe.jpg");
+}
+
+/* Dark mode */
+html[data-theme="dark"] .about-bg {
+    background-image: url("/images/bg/SunriseAboutMe.jpg");
+}
+
+/* Shared background styling */
+.about-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* optional */
+}
