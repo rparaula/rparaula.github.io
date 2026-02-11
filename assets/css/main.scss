@@ -43,43 +43,74 @@
 ;
 
 
-/* Make sure the sidebar never slides under the nav */
+/* ===== Shared background image ===== */
+:root {
+    --shared-bg: url("/images/bg/SunriseAboutMe.jpg");
+    --nav-offset: 65px; /* adjust if your masthead is taller */
+}
+
+/* ===== Top navigation (masthead) uses shared image ===== */
+.masthead,
+.masthead__inner-wrap,
+.greedy-nav {
+    background-image: var(--shared-bg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Overlay on nav for readability */
+.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.masthead::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.08); /* light mode */
+    pointer-events: none;
+}
+
+html[data-theme="dark"] .masthead::after {
+    background: rgba(0,0,0,0.45);
+}
+
+/* ===== Sidebar uses shared image ===== */
 .sidebar.sticky {
     position: sticky;
-    top: 90px; /* use a larger offset than 65px to clear the navbar safely */
-    /* fill viewport height while stuck */
-    max-height: calc(100vh - 90px);
+    top: var(--nav-offset);
+    max-height: calc(100vh - var(--nav-offset));
     overflow: auto;
-    /* FULL background */
-    background-image: url("/images/bg/SunriseAboutMe.jpg");
+    background-image: var(--shared-bg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* extend visually */
     padding: 1.25rem;
     border-radius: 18px;
-    /* ensure overlay works correctly */
+    /* IMPORTANT: ensures ::before positions correctly */
     z-index: 1;
 }
 
-/* Overlay for readability */
+/* Overlay on sidebar for readability */
 .sidebar.sticky::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.10); /* light mode overlay */
+    background: rgba(255,255,255,0.10); /* light mode */
     pointer-events: none;
     z-index: 0;
 }
 
-/* Dark mode overlay */
 html[data-theme="dark"] .sidebar.sticky::before {
     background: rgba(0,0,0,0.45);
 }
 
-/* Put sidebar contents above overlay */
+/* Keep sidebar content above overlay */
 .sidebar.sticky > * {
-    position: relative;
+    position: sticky;
     z-index: 1;
 }
 
@@ -89,40 +120,4 @@ html[data-theme="dark"] .sidebar.sticky::before {
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
-}
-
-
-
-
-
-
-
-/* Let the background show through the top nav */
-.masthead,
-.masthead__inner-wrap,
-.greedy-nav {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Add a readable overlay so text/icons stay visible */
-.masthead {
-    position: sticky; /* keeps nav behavior */
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-.masthead::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35); /* light mode overlay strength */
-    pointer-events: none;
-    z-index: -1;
-}
-
-html[data-theme="dark"] .masthead::before {
-    background: rgba(0,0,0,0.55);
 }
