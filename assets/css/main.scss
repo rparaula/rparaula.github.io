@@ -121,3 +121,40 @@ html[data-theme="dark"] .sidebar.sticky::before {
     background: transparent !important;
     box-shadow: none !important;
 }
+
+
+
+/* ===== Top navigation (masthead) uses shared image ===== */
+.masthead,
+.masthead__inner-wrap,
+.greedy-nav {
+    background-image: var(--shared-bg) !important;
+    background-size: cover !important;
+    background-position: left center !important; /* helps you SEE the image */
+    background-repeat: no-repeat !important;
+    background-color: transparent !important; /* IMPORTANT: prevents color from hiding image */
+}
+
+/* Overlay on nav for readability */
+.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.masthead__inner-wrap {
+    position: relative; /* makes overlay positioning reliable */
+}
+
+.masthead__inner-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.08);
+    pointer-events: none;
+}
+
+html[data-theme="dark"] .masthead__inner-wrap::after {
+    background: rgba(0,0,0,0.45);
+}
+
