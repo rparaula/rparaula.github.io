@@ -1,55 +1,52 @@
 ---
 ---
-
 /*
  * This file controls what is imported from /_sass
  *
  * Note that the files are processed in the order they are imported, so they are partly
-   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ * sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
-
 @import
-    "vendor/breakpoint/breakpoint",
-
-    "themes",
-    "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
-    "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
-
-    "include/mixins",
-    "vendor/susy/susy",
-
-    "layout/reset",
-    "layout/base",
-
-    "include/utilities",
-    "layout/tables",
-    "layout/buttons",
-    "layout/notices",
-    "layout/masthead",
-    "layout/navigation",
-    "layout/footer",
-    "syntax",
-
-    "layout/forms",
-
-    "layout/page",
-    "layout/archive",
-    "layout/sidebar",
-    "layout/json_cv",
-
-    "vendor/font-awesome/fontawesome",
-    "vendor/font-awesome/solid",
-    "vendor/font-awesome/brands"
+"vendor/breakpoint/breakpoint",
+"themes",
+"theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
+"theme/{{ site.site_theme | default: 'default' | append: '_dark' }}",
+"include/mixins",
+"vendor/susy/susy",
+"layout/reset",
+"layout/base",
+"include/utilities",
+"layout/tables",
+"layout/buttons",
+"layout/notices",
+"layout/masthead",
+"layout/navigation",
+"layout/footer",
+"syntax",
+"layout/forms",
+"layout/page",
+"layout/archive",
+"layout/sidebar",
+"layout/json_cv",
+"vendor/font-awesome/fontawesome",
+"vendor/font-awesome/solid",
+"vendor/font-awesome/brands"
 ;
 
+/* =========================================================
+   Custom overrides (place ALL custom CSS below the imports)
+   ========================================================= */
 
-/* ===== Shared background image ===== */
+/* Shared background image (used by BOTH nav + sidebar) */
 :root {
     --shared-bg: url("/images/bg/SunriseAboutMe.jpg");
-    --nav-offset: 65px; /* adjust if your masthead is taller */
 }
 
-/* ===== Top navigation (masthead) uses shared image ===== */
+/* -------------------------
+   Top navigation (masthead)
+   ------------------------- */
+
+/* Apply image directly to nav elements */
 .masthead,
 .masthead__inner-wrap,
 .greedy-nav {
@@ -57,104 +54,71 @@
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+    /* Critical: theme can paint a background-color on top */
+    background-color: transparent !important;
 }
 
-/* Overlay on nav for readability */
-.masthead {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.masthead::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.08); /* light mode */
-    pointer-events: none;
-}
-
-html[data-theme="dark"] .masthead::after {
-    background: rgba(0,0,0,0.45);
-}
-
-/* ===== Sidebar uses shared image ===== */
-.sidebar.sticky {
-    position: sticky;
-    top: var(--nav-offset);
-    max-height: calc(100vh - var(--nav-offset));
-    overflow: auto;
-    background-image: var(--shared-bg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 1.25rem;
-    border-radius: 18px;
-    /* IMPORTANT: ensures ::before positions correctly */
-    z-index: 1;
-}
-
-/* Overlay on sidebar for readability */
-.sidebar.sticky::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.10); /* light mode */
-    pointer-events: none;
-    z-index: 0;
-}
-
-html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0,0,0,0.45);
-}
-
-/* Keep sidebar content above overlay */
-.sidebar.sticky > * {
-    position: sticky;
-    z-index: 1;
-}
-
-/* Let the image show through the inner cards */
-.sidebar .author__avatar,
-.sidebar .author__content,
-.sidebar .author__urls-wrapper {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-
-
-/* ===== Top navigation (masthead) uses shared image ===== */
-.masthead,
-.masthead__inner-wrap,
-.greedy-nav {
-    background-image: var(--shared-bg) !important;
-    background-size: cover !important;
-    background-position: left center !important; /* helps you SEE the image */
-    background-repeat: no-repeat !important;
-    background-color: transparent !important; /* IMPORTANT: prevents color from hiding image */
-}
-
-/* Overlay on nav for readability */
-.masthead {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
+/* Add a readable overlay on the nav */
 .masthead__inner-wrap {
-    position: relative; /* makes overlay positioning reliable */
+    position: relative; /* required for ::after */
 }
 
 .masthead__inner-wrap::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08); /* light mode overlay */
     pointer-events: none;
 }
 
 html[data-theme="dark"] .masthead__inner-wrap::after {
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.45); /* dark mode overlay */
 }
 
+/* -------------------------
+   Sidebar (left column)
+   ------------------------- */
+
+.sidebar.sticky {
+    /* keep template behavior */
+    position: sticky;
+    top: 65px;
+    /* image */
+    background-image: var(--shared-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* optional: make it look like your screenshot */
+    padding: 1.25rem;
+    border-radius: 18px;
+    /* for overlay layering */
+    z-index: 1;
+}
+
+/* Overlay for readability */
+.sidebar.sticky::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.10); /* light mode overlay */
+    pointer-events: none;
+    z-index: 0;
+}
+
+html[data-theme="dark"] .sidebar.sticky::before {
+    background: rgba(0, 0, 0, 0.45); /* dark mode overlay */
+}
+
+/* Sidebar content above overlay */
+.sidebar.sticky > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Make inner “cards” transparent so the image shows through */
+.sidebar .author__avatar,
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+    background: transparent !important;
+    box-shadow: none !important;
+}
