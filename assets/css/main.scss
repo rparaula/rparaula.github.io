@@ -70,34 +70,6 @@
   position: sticky;
 }
 
-/* Overlay for readability */
-.sidebar.sticky::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    /* full-bleed math applies to the BACKGROUND ONLY */
-    left: calc(-1 * (50vw - 50%));
-    width: calc(100% + (50vw - 50%));
-    background-image: url("/images/bg/SunriseAboutMe.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.sidebar.sticky::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(-1 * (50vw - 50%));
-    width: calc(100% + (50vw - 50%));
-    background: rgba(255, 255, 255, 0.10); /* light mode */
-    z-index: 1;
-    pointer-events: none;
-}
 
 /* Dark mode overlay */
 html[data-theme="dark"] .sidebar.sticky::before {
@@ -111,6 +83,33 @@ html[data-theme="dark"] .sidebar.sticky::before {
 }
 
 /* Let the image show through the inner cards */
+.sidebar .author__avatar,
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+:root {
+    --nav-h: 65px; /* your header height */
+    --left-w: 34vw; /* how wide the left image strip is */
+}
+
+/* Light mode: gradient overlay + image */
+body {
+    background-image: linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)), url("/images/bg/SunriseAboutMe.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: var(--left-w) calc(100vh - var(--nav-h)), var(--left-w) calc(100vh - var(--nav-h));
+    background-position: left 0px top var(--nav-h), left 0px top var(--nav-h);
+    background-attachment: fixed, fixed;
+}
+
+/* Dark mode: darker overlay (your site uses html[data-theme="dark"]) */
+html[data-theme="dark"] body {
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("/images/bg/SunriseAboutMe.jpg");
+}
+
+/* Make sidebar cards transparent so the body background shows through */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
