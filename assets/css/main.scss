@@ -59,7 +59,7 @@ body::before {
     top: var(--nav-h);
     width: var(--left-strip-w);
     height: calc(100vh - var(--nav-h) - var(--footer-h));
-    background-image: url("/images/sidebar-bg.jpg"); /* or your correct path */
+    background-image: url("/images/bg/SunriseAboutMe.jpg"); /* or your correct path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
