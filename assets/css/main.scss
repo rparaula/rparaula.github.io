@@ -71,11 +71,6 @@
 }
 
 
-/* Dark mode overlay */
-html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0,0,0,0.45);
-}
-
 /* Put sidebar contents above overlay */
 .sidebar.sticky > * {
     position: relative;
@@ -91,28 +86,29 @@ html[data-theme="dark"] .sidebar.sticky::before {
 }
 
 :root {
-    --nav-h: 65px; /* your header height */
-    --left-w: 34vw; /* how wide the left image strip is */
+    --nav-h: 65px; /* matches your header spacing */
+    --left-w: 34vw; /* width of the left image strip */
 }
 
-/* Light mode: gradient overlay + image */
+/* Light mode: overlay + image strip */
 body {
     background-image: linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)), url("/images/bg/SunriseAboutMe.jpg");
     background-repeat: no-repeat, no-repeat;
     background-size: var(--left-w) calc(100vh - var(--nav-h)), var(--left-w) calc(100vh - var(--nav-h));
-    background-position: left 0px top var(--nav-h), left 0px top var(--nav-h);
+    background-position: left 0 top var(--nav-h), left 0 top var(--nav-h);
     background-attachment: fixed, fixed;
 }
 
-/* Dark mode: darker overlay (your site uses html[data-theme="dark"]) */
+/* Dark mode overlay */
 html[data-theme="dark"] body {
     background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("/images/bg/SunriseAboutMe.jpg");
 }
 
-/* Make sidebar cards transparent so the body background shows through */
+/* Let the body strip show through the sidebar cards */
 .sidebar .author__avatar,
 .sidebar .author__content,
 .sidebar .author__urls-wrapper {
     background: transparent !important;
     box-shadow: none !important;
 }
+
