@@ -46,10 +46,14 @@
 
 /* Make sidebar background extend to the left edge only */
 .sidebar.sticky {
+    position: relative;
     background-image: url("/images/bg/SunriseAboutMe.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    top: 90px;
+    max-height: calc(100vh - 90px);
+    overflow: auto;
     /* full-bleed to the left */
     margin-left: calc(50% - 50vw);
     padding-left: calc(50vw - 50% + 1.25rem);
