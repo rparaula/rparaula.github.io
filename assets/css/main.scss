@@ -46,32 +46,33 @@
    Top navigation (masthead)
    ------------------------- */
 
-/* ===== Force the IMAGE onto the masthead using shorthand ===== */
-.masthead {
-    background: var(--shared-bg) center / cover no-repeat !important;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* Make sure inner wrappers don't paint over it */
+/* Apply image directly to nav elements */
+.masthead,
 .masthead__inner-wrap,
 .greedy-nav {
-    background: transparent !important; /* shorthand beats theme shorthand */
+    background-image: var(--shared-bg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    /* Critical: theme can paint a background-color on top */
     background-color: transparent !important;
 }
 
-/* Optional overlay for readability (put it on masthead itself) */
-.masthead::after {
+/* Add a readable overlay on the nav */
+.masthead__inner-wrap {
+    position: relative; /* required for ::after */
+}
+
+.masthead__inner-wrap::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08); /* light mode overlay */
     pointer-events: none;
 }
 
-html[data-theme="dark"] .masthead::after {
-    background: rgba(0,0,0,0.45);
+html[data-theme="dark"] .masthead__inner-wrap::after {
+    background: rgba(0, 0, 0, 0.45); /* dark mode overlay */
 }
 
 /* -------------------------
