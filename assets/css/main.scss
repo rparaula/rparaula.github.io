@@ -49,8 +49,6 @@
     top: 90px;
     max-height: calc(100vh - 90px);
     overflow: auto;
-    /* LIGHT MODE background */
-    background-image: url("/images/bg/Day4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,10 +57,28 @@
     z-index: 1;
 }
 
-/* DARK MODE background image override */
-html[data-theme="dark"] .sidebar.sticky {
-    background-image: url("/images/bg/Night4.jpg");
-}
+/* =====================================================
+   PER-PAGE SIDEBAR BACKGROUNDS
+   Light mode uses body.<page>-bg selector.
+   Dark mode adds html[data-theme="dark"] in front.
+   Swap out the image filenames to change each page's bg.
+   ===================================================== */
+
+/* --- About Me --- */
+body.about-bg .sidebar.sticky               { background-image: url("/images/bg/Day1.jpg"); }
+html[data-theme="dark"] body.about-bg .sidebar.sticky { background-image: url("/images/bg/Night1.jpg"); }
+
+/* --- Portfolio --- */
+body.portfolio-bg .sidebar.sticky               { background-image: url("/images/bg/Day2.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .sidebar.sticky { background-image: url("/images/bg/Night2.jpg"); }
+
+/* --- CV / Resume --- */
+body.cv-bg .sidebar.sticky               { background-image: url("/images/bg/Day3.jpg"); }
+html[data-theme="dark"] body.cv-bg .sidebar.sticky { background-image: url("/images/bg/Night3.jpg"); }
+
+/* --- Default fallback (pages without a classes: value) --- */
+.sidebar.sticky               { background-image: url("/images/bg/Day4.jpg"); }
+html[data-theme="dark"] .sidebar.sticky { background-image: url("/images/bg/Night4.jpg"); }
 
 
 /* Overlay for readability (light mode default) */
