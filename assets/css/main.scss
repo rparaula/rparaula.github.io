@@ -65,16 +65,16 @@
    ===================================================== */
 
 /* --- About Me --- */
-body.about-bg .sidebar.sticky               { background-image: url("/images/bg/Day1.jpg"); }
-html[data-theme="dark"] body.about-bg .sidebar.sticky { background-image: url("/images/bg/Night1.jpg"); }
+.sidebar.sticky.about-bg               { background-image: url("/images/bg/Day1.jpg"); }
+html[data-theme="dark"] .sidebar.sticky.about-bg { background-image: url("/images/bg/Night1.jpg"); }
 
 /* --- Portfolio --- */
-body.portfolio-bg .sidebar.sticky               { background-image: url("/images/bg/Day2.jpg"); }
-html[data-theme="dark"] body.portfolio-bg .sidebar.sticky { background-image: url("/images/bg/Night2.jpg"); }
+.sidebar.sticky.portfolio-bg               { background-image: url("/images/bg/Day2.jpg"); }
+html[data-theme="dark"] .sidebar.sticky.portfolio-bg { background-image: url("/images/bg/Night2.jpg"); }
 
 /* --- CV / Resume --- */
-body.cv-bg .sidebar.sticky               { background-image: url("/images/bg/Day3.jpg"); }
-html[data-theme="dark"] body.cv-bg .sidebar.sticky { background-image: url("/images/bg/Night3.jpg"); }
+.sidebar.sticky.cv-bg               { background-image: url("/images/bg/Day3.jpg"); }
+html[data-theme="dark"] .sidebar.sticky.cv-bg { background-image: url("/images/bg/Night3.jpg"); }
 
 /* --- Default fallback (pages without a classes: value) --- */
 .sidebar.sticky               { background-image: url("/images/bg/Day4.jpg"); }
