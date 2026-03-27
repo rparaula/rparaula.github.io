@@ -50,7 +50,7 @@
     max-height: calc(100vh - 90px);
     overflow: auto;
     /* LIGHT MODE background */
-    background-image: url("/images/bg/Day3.jpg");
+    background-image: url("/images/bg/Day4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@
 
 /* DARK MODE background image override */
 html[data-theme="dark"] .sidebar.sticky {
-    background-image: url("/images/bg/Night3.jpg");
+    background-image: url("/images/bg/Night4.jpg");
 }
 
 
