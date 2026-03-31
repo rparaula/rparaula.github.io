@@ -80,7 +80,7 @@ html[data-theme="dark"] body               { background-image: url("/images/bg/N
 
 
 /* =====================================================
-   SIDEBAR — solid theme-color panel
+   SIDEBAR — dynamic background images
    ===================================================== */
 
 /* Make sure the sidebar never slides under the nav */
@@ -89,10 +89,62 @@ html[data-theme="dark"] body               { background-image: url("/images/bg/N
     top: 90px;
     max-height: calc(100vh - 90px);
     overflow: auto;
-    background-color: var(--global-bg-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 1.25rem;
     border-radius: 18px;
     z-index: 1;
+}
+
+/* --- About Me --- */
+body.about-bg .sidebar.sticky                             { background-image: url("/images/bg/Day1.jpg"); }
+html[data-theme="dark"] body.about-bg .sidebar.sticky     { background-image: url("/images/bg/Night1.jpg"); }
+
+/* --- Portfolio --- */
+body.portfolio-bg .sidebar.sticky                         { background-image: url("/images/bg/Day2.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .sidebar.sticky { background-image: url("/images/bg/Night2.jpg"); }
+
+/* --- CV / Resume --- */
+body.cv-bg .sidebar.sticky                                { background-image: url("/images/bg/Day3.jpg"); }
+html[data-theme="dark"] body.cv-bg .sidebar.sticky        { background-image: url("/images/bg/Night3.jpg"); }
+
+/* --- Default fallback --- */
+.sidebar.sticky                                           { background-image: url("/images/bg/Day4.jpg"); }
+html[data-theme="dark"] .sidebar.sticky                   { background-image: url("/images/bg/Night4.jpg"); }
+
+/* Overlay for readability (light mode) */
+.sidebar.sticky::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.10);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Dark mode overlay */
+html[data-theme="dark"] .sidebar.sticky::before {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Put sidebar contents above overlay */
+.sidebar.sticky > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Let the image show through the inner cards */
+.sidebar .author__avatar,
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Text shadows for readability against the dynamic background */
+.sidebar.sticky * {
+    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
 }
 
 
