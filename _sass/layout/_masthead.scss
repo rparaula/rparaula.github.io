@@ -4,7 +4,7 @@
 
 .masthead {
   position: fixed;
-  background: transparent; /* blurred image lives in ::before */
+  background: var(--global-bg-color);
   height: fit-content;
   top: 0;
   width: 100%;
@@ -15,22 +15,6 @@
           animation-delay: 0.15s;
   z-index: 20;
 
-  /* Blurred background image shared with the footer */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -20px; /* extend beyond edges so blur doesn't show white fringing */
-    background:
-      linear-gradient(var(--nav-footer-overlay), var(--nav-footer-overlay)),
-      var(--nav-footer-bg-image, none);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(10px);
-    clip-path: inset(20px); /* clip back to the masthead's visual boundary */
-    z-index: 0;
-  }
-
   &::after {
     content: "";
     position: absolute;
@@ -38,7 +22,6 @@
     height: 1px;
     background: var(--global-border-color);
     width: 100%;
-    z-index: 1;
   }
 
   &__inner-wrap {
@@ -46,8 +29,6 @@
     @include clearfix;
     padding: 0.5em 1em;
     font-family: $sans-serif-narrow;
-    position: relative; /* ensure nav links stack above ::before */
-    z-index: 1;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -74,7 +55,7 @@
 }
 
 .masthead__menu-item {
-  background-color: transparent; /* transparent to reveal the blurred ::before */
+  background-color: var(--global-bg-color);
   display: block;
   list-style-type: none;
   white-space: nowrap;

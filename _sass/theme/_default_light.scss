@@ -44,9 +44,5 @@ $sidebar-screen-min-width   : 1024px;
     --global-text-color                 : #{$dark-gray};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$lighter-gray};
-
-    /* Shared nav + footer blurred background */
-    --nav-footer-bg-image               : url("/images/bg/Day4.jpg");  /* default fallback */
-    --nav-footer-overlay                : rgba(255, 255, 255, 0.40);
 }
 

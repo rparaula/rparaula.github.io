@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: transparent; /* transparent — masthead ::before provides the background */
+  background: var(--global-bg-color);
 
   a {
     display: block;
@@ -196,7 +196,7 @@
     padding: 0 0.5rem;
     border: 0;
     outline: none;
-    background-color: transparent; /* transparent — masthead ::before provides the background */
+    background-color: var(--global-bg-color);
     color: var(--global-text-color);
     cursor: pointer;
     z-index: 100;

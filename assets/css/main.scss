@@ -155,23 +155,6 @@ html[data-theme="dark"] body.cv-bg .sidebar.sticky { background-image: url("/ima
 html[data-theme="dark"] .sidebar.sticky { background-image: url("/images/bg/Night4.jpg"); }
 
 
-/* =====================================================
-   NAV & FOOTER BLURRED BACKGROUND — PER-PAGE IMAGES
-   Both .masthead::before and .page__footer::before read
-   --nav-footer-bg-image from the body element.
-   One CSS variable drives both, so they always match.
-   ===================================================== */
-body.home-bg      { --nav-footer-bg-image: url("/images/bg/Day5.jpg");  }
-body.about-bg     { --nav-footer-bg-image: url("/images/bg/Day1.jpg");  }
-body.portfolio-bg { --nav-footer-bg-image: url("/images/bg/Day2.jpg");  }
-body.cv-bg        { --nav-footer-bg-image: url("/images/bg/Day3.jpg");  }
-
-html[data-theme="dark"] body.home-bg      { --nav-footer-bg-image: url("/images/bg/Night5.jpg"); }
-html[data-theme="dark"] body.about-bg     { --nav-footer-bg-image: url("/images/bg/Night1.jpg"); }
-html[data-theme="dark"] body.portfolio-bg { --nav-footer-bg-image: url("/images/bg/Night2.jpg"); }
-html[data-theme="dark"] body.cv-bg        { --nav-footer-bg-image: url("/images/bg/Night3.jpg"); }
-
-
 /* Overlay for readability (light mode default) */
 .sidebar.sticky::before {
     content: "";
