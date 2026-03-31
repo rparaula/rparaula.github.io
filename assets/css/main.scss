@@ -109,3 +109,8 @@ html[data-theme="dark"] .sidebar.sticky::before {
     background: transparent !important;
     box-shadow: none !important;
 }
+
+/* Text shadows for readability against the dynamic background */
+.sidebar.sticky * {
+    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
+}
