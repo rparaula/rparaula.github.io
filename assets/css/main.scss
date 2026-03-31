@@ -188,3 +188,111 @@ html[data-theme="dark"] .sidebar.sticky::before {
 .sidebar.sticky * {
     text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
 }
+
+/* =====================================================
+   NAV BAR + FOOTER SHARED BACKGROUND (WINDOW EFFECT)
+   Both elements use background-attachment: fixed with
+   the same per-page image so it looks like a single
+   image is visible through both sections as "windows."
+   ===================================================== */
+
+/* --- Masthead (nav bar) base setup --- */
+.masthead {
+    background-color: transparent;
+    background-image: url("/images/bg/Day4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html[data-theme="dark"] .masthead {
+    background-image: url("/images/bg/Night4.jpg");
+}
+
+/* Readability overlay — sits behind nav links */
+.masthead::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
+    pointer-events: none;
+    z-index: 0;
+}
+html[data-theme="dark"] .masthead::before {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Keep nav content above the overlay */
+.masthead__inner-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove the opaque per-item bg so the image shows through */
+.masthead__menu-item {
+    background-color: transparent !important;
+}
+
+/* --- Footer base setup --- */
+.page__footer {
+    background-color: transparent;
+    background-image: url("/images/bg/Day4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html[data-theme="dark"] .page__footer {
+    background-image: url("/images/bg/Night4.jpg");
+}
+
+/* Readability overlay — sits behind footer content */
+.page__footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
+    pointer-events: none;
+    z-index: 0;
+}
+html[data-theme="dark"] .page__footer::before {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* Keep footer content above the overlay */
+.page__footer > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Text readability against the dynamic background */
+.masthead *,
+.page__footer * {
+    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow, rgba(0, 0, 0, 0.4));
+}
+
+/* --- Per-page overrides (mirror the sidebar images exactly) --- */
+
+/* Home */
+body.home-bg .masthead,
+body.home-bg .page__footer                               { background-image: url("/images/bg/Day5.jpg"); }
+html[data-theme="dark"] body.home-bg .masthead,
+html[data-theme="dark"] body.home-bg .page__footer        { background-image: url("/images/bg/Night5.jpg"); }
+
+/* About Me */
+body.about-bg .masthead,
+body.about-bg .page__footer                              { background-image: url("/images/bg/Day1.jpg"); }
+html[data-theme="dark"] body.about-bg .masthead,
+html[data-theme="dark"] body.about-bg .page__footer       { background-image: url("/images/bg/Night1.jpg"); }
+
+/* Portfolio */
+body.portfolio-bg .masthead,
+body.portfolio-bg .page__footer                          { background-image: url("/images/bg/Day2.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .masthead,
+html[data-theme="dark"] body.portfolio-bg .page__footer   { background-image: url("/images/bg/Night2.jpg"); }
+
+/* CV / Resume */
+body.cv-bg .masthead,
+body.cv-bg .page__footer                                 { background-image: url("/images/bg/Day3.jpg"); }
+html[data-theme="dark"] body.cv-bg .masthead,
+html[data-theme="dark"] body.cv-bg .page__footer          { background-image: url("/images/bg/Night3.jpg"); }
