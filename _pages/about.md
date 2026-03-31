@@ -1,5 +1,5 @@
 ---
-permalink: /aboutme/
+permalink: /about/
 title: "About Me"
 author_profile: true
 classes: about-bg
