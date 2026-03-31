@@ -209,17 +209,26 @@ html[data-theme="dark"] .masthead {
     background-image: url("/images/bg/NightLandscape.jpg");
 }
 
-/* Readability overlay — sits behind nav links */
+/* Readability overlay — sits behind nav links, blurs the image beneath it */
 .masthead::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     pointer-events: none;
     z-index: 0;
 }
 html[data-theme="dark"] .masthead::before {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.40);
+}
+
+/* Strip every background in the nav so the blurred image shows through */
+.masthead,
+.masthead .greedy-nav,
+.masthead .greedy-nav button {
+    background: transparent !important;
 }
 
 /* Keep nav content above the overlay */
@@ -229,7 +238,8 @@ html[data-theme="dark"] .masthead::before {
 }
 
 /* Remove the opaque per-item bg so the image shows through */
-.masthead__menu-item {
+.masthead__menu-item,
+.masthead__menu-item a {
     background-color: transparent !important;
 }
 
@@ -246,17 +256,19 @@ html[data-theme="dark"] .page__footer {
     background-image: url("/images/bg/NightLandscape.jpg");
 }
 
-/* Readability overlay — sits behind footer content */
+/* Readability overlay — sits behind footer content, blurs the image beneath it */
 .page__footer::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     pointer-events: none;
     z-index: 0;
 }
 html[data-theme="dark"] .page__footer::before {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.40);
 }
 
 /* Keep footer content above the overlay */
