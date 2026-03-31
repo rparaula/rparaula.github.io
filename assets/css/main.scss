@@ -43,127 +43,65 @@
 ;
 
 
+/* =====================================================
+   FULL-PAGE DYNAMIC BACKGROUNDS
+   The image is placed on <body> and stays fixed while
+   scrolling. The sidebar and content panels float in
+   front with the solid theme color, so only the area
+   outside them (the "gaps" around #main) shows the image.
+   Light mode uses body.<page>-bg selector.
+   Dark mode adds html[data-theme="dark"] in front.
+   Swap out the image filenames to change each page's bg.
+   ===================================================== */
+
+/* Base body background setup */
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* --- About Me --- */
+body.about-bg                               { background-image: url("/images/bg/Day1.jpg"); }
+html[data-theme="dark"] body.about-bg       { background-image: url("/images/bg/Night1.jpg"); }
+
+/* --- Portfolio --- */
+body.portfolio-bg                           { background-image: url("/images/bg/Day2.jpg"); }
+html[data-theme="dark"] body.portfolio-bg   { background-image: url("/images/bg/Night2.jpg"); }
+
+/* --- CV / Resume --- */
+body.cv-bg                                  { background-image: url("/images/bg/Day3.jpg"); }
+html[data-theme="dark"] body.cv-bg          { background-image: url("/images/bg/Night3.jpg"); }
+
+/* --- Default fallback (pages without a classes: value) --- */
+body                                        { background-image: url("/images/bg/Day4.jpg"); }
+html[data-theme="dark"] body               { background-image: url("/images/bg/Night4.jpg"); }
+
+
+/* =====================================================
+   SIDEBAR — solid theme-color panel
+   ===================================================== */
+
 /* Make sure the sidebar never slides under the nav */
 .sidebar.sticky {
     position: sticky;
     top: 90px;
     max-height: calc(100vh - 90px);
     overflow: auto;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--global-bg-color);
     padding: 1.25rem;
     border-radius: 18px;
     z-index: 1;
 }
 
-/* =====================================================
-   PER-PAGE SIDEBAR BACKGROUNDS
-   Light mode uses body.<page>-bg selector.
-   Dark mode adds html[data-theme="dark"] in front.
-   Swap out the image filenames to change each page's bg.
-   ===================================================== */
-
-/* --- About Me --- */
-body.about-bg .sidebar.sticky               { background-image: url("/images/bg/Day1.jpg"); }
-html[data-theme="dark"] body.about-bg .sidebar.sticky { background-image: url("/images/bg/Night1.jpg"); }
-
-/* --- Portfolio --- */
-body.portfolio-bg .sidebar.sticky               { background-image: url("/images/bg/Day2.jpg"); }
-html[data-theme="dark"] body.portfolio-bg .sidebar.sticky { background-image: url("/images/bg/Night2.jpg"); }
-
-/* --- CV / Resume --- */
-body.cv-bg .sidebar.sticky               { background-image: url("/images/bg/Day3.jpg"); }
-html[data-theme="dark"] body.cv-bg .sidebar.sticky { background-image: url("/images/bg/Night3.jpg"); }
-
-/* --- Default fallback (pages without a classes: value) --- */
-.sidebar.sticky               { background-image: url("/images/bg/Day4.jpg"); }
-html[data-theme="dark"] .sidebar.sticky { background-image: url("/images/bg/Night4.jpg"); }
-
-
-/* Overlay for readability (light mode default) */
-.sidebar.sticky::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.10);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Dark mode overlay */
-html[data-theme="dark"] .sidebar.sticky::before {
-    background: rgba(0,0,0,0.45);
-}
-
-/* Put sidebar contents above overlay */
-.sidebar.sticky > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Let the image show through the inner cards */
-.sidebar .author__avatar,
-.sidebar .author__content,
-.sidebar .author__urls-wrapper {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Text shadows for readability against the dynamic background */
-.sidebar.sticky * {
-    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
-}
 
 /* =====================================================
-   PER-PAGE CONTENT AREA BACKGROUNDS
-   Targets the main <article class="page"> element —
-   covers the content column only, leaving the sidebar,
-   masthead, and footer unaffected.
-   Light mode uses body.<page>-bg selector.
-   Dark mode adds html[data-theme="dark"] in front.
-   Swap out filenames below to change each page's bg.
+   CONTENT AREA — solid theme-color panel
    ===================================================== */
 
-/* Base setup — applied whenever a content bg image is active */
 .page {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--global-bg-color);
     border-radius: 18px;
-    overflow: hidden;
+    padding: 1.25rem;
 }
-
-/* Readability overlay (light mode) */
-.page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.15);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Readability overlay (dark mode) */
-html[data-theme="dark"] .page::before {
-    background: rgba(0, 0, 0, 0.45);
-}
-
-/* Keep all page content above the overlay */
-.page > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* --- About Me --- */
-body.about-bg .page                               { background-image: url("/images/bg/DayLandscape.jpg"); }
-html[data-theme="dark"] body.about-bg .page       { background-image: url("/images/bg/NightLandscape.jpg"); }
-
-/* --- Portfolio --- */
-body.portfolio-bg .page                           { background-image: url("/images/bg/DayLandscape.jpg"); }
-html[data-theme="dark"] body.portfolio-bg .page   { background-image: url("/images/bg/NightLandscape.jpg"); }
-
-/* --- CV / Resume --- */
-/* body.cv-bg .page                               { background-image: url("/images/bg/Day?.jpg"); } */
-/* html[data-theme="dark"] body.cv-bg .page       { background-image: url("/images/bg/Night?.jpg"); } */
