@@ -285,11 +285,37 @@ html[data-theme="dark"] .page__footer::before {
 
 /* --- Per-page overrides (mirror the sidebar images exactly) --- */
 
-/* Home */
+/* Home — reverse role: body carries the image, nav/footer revert to static theme colors */
 body.home-bg .masthead,
-body.home-bg .page__footer                               { background-image: url("/images/bg/DayLandscape.jpg"); }
+body.home-bg .page__footer {
+    background-image: none !important;
+    background-color: var(--global-bg-color) !important;
+    background-attachment: unset !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
 html[data-theme="dark"] body.home-bg .masthead,
-html[data-theme="dark"] body.home-bg .page__footer        { background-image: url("/images/bg/NightLandscape.jpg"); }
+html[data-theme="dark"] body.home-bg .page__footer {
+    background-color: var(--global-bg-color) !important;
+}
+body.home-bg .page__footer {
+    background-color: var(--global-footer-bg-color) !important;
+}
+html[data-theme="dark"] body.home-bg .page__footer {
+    background-color: var(--global-footer-bg-color) !important;
+}
+
+/* Suppress the blur overlay on home nav/footer */
+body.home-bg .masthead::before,
+body.home-bg .page__footer::before {
+    display: none !important;
+}
+
+/* No text shadow needed on plain theme-color backgrounds */
+body.home-bg .masthead *,
+body.home-bg .page__footer * {
+    text-shadow: none !important;
+}
 
 /* About Me */
 body.about-bg .masthead,
