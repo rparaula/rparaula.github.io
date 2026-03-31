@@ -52,5 +52,9 @@ html[data-theme="dark"] {
     --global-text-color                 : #{$text};
     --global-text-color-light           : #f3f3f3;
     --global-thead-color                : #{$background-lighter};
+
+    /* Shared nav + footer blurred background */
+    --nav-footer-bg-image               : url("/images/bg/Night4.jpg"); /* default fallback */
+    --nav-footer-overlay                : rgba(0, 0, 0, 0.50);
 }
 

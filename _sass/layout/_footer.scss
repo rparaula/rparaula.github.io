@@ -4,8 +4,9 @@
 
 .page__footer {
   @include clearfix;
-  background-color: var(--global-footer-bg-color);
+  background-color: transparent; /* blurred image lives in ::before */
   color: var(--global-text-color-light);
+  overflow: hidden; /* clip the ::before blur to footer bounds */
 
   float: left;
   margin-left: 0;
@@ -27,6 +28,21 @@
           animation-delay: 0.45s;
   border-top: 1px solid var(--global-dark-border-color);
 
+  /* Blurred background image shared with the masthead */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20px; /* extend beyond edges so blur doesn't show white fringing */
+    background:
+      linear-gradient(var(--nav-footer-overlay), var(--nav-footer-overlay)),
+      var(--nav-footer-bg-image, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    z-index: 0;
+  }
+
   footer {
     @include clearfix;
     margin-left: auto;
@@ -34,6 +50,8 @@
     margin-top: 1em;
     max-width: 100%;
     padding: 0 1em 1em;
+    position: relative; /* stack above ::before */
+    z-index: 1;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
