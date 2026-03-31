@@ -199,14 +199,14 @@ html[data-theme="dark"] .sidebar.sticky::before {
 /* --- Masthead (nav bar) base setup --- */
 .masthead {
     background-color: transparent;
-    background-image: url("/images/bg/Day4.jpg");
+    background-image: url("/images/bg/DayLandscape.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 html[data-theme="dark"] .masthead {
-    background-image: url("/images/bg/Night4.jpg");
+    background-image: url("/images/bg/NightLandscape.jpg");
 }
 
 /* Readability overlay — sits behind nav links */
@@ -236,14 +236,14 @@ html[data-theme="dark"] .masthead::before {
 /* --- Footer base setup --- */
 .page__footer {
     background-color: transparent;
-    background-image: url("/images/bg/Day4.jpg");
+    background-image: url("/images/bg/DayLandscape.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 html[data-theme="dark"] .page__footer {
-    background-image: url("/images/bg/Night4.jpg");
+    background-image: url("/images/bg/NightLandscape.jpg");
 }
 
 /* Readability overlay — sits behind footer content */
@@ -275,24 +275,24 @@ html[data-theme="dark"] .page__footer::before {
 
 /* Home */
 body.home-bg .masthead,
-body.home-bg .page__footer                               { background-image: url("/images/bg/Day5.jpg"); }
+body.home-bg .page__footer                               { background-image: url("/images/bg/DayLandscape.jpg"); }
 html[data-theme="dark"] body.home-bg .masthead,
-html[data-theme="dark"] body.home-bg .page__footer        { background-image: url("/images/bg/Night5.jpg"); }
+html[data-theme="dark"] body.home-bg .page__footer        { background-image: url("/images/bg/NightLandscape.jpg"); }
 
 /* About Me */
 body.about-bg .masthead,
-body.about-bg .page__footer                              { background-image: url("/images/bg/Day1.jpg"); }
+body.about-bg .page__footer                              { background-image: url("/images/bg/DayLandscape.jpg"); }
 html[data-theme="dark"] body.about-bg .masthead,
-html[data-theme="dark"] body.about-bg .page__footer       { background-image: url("/images/bg/Night1.jpg"); }
+html[data-theme="dark"] body.about-bg .page__footer       { background-image: url("/images/bg/NightLandscape.jpg"); }
 
 /* Portfolio */
 body.portfolio-bg .masthead,
-body.portfolio-bg .page__footer                          { background-image: url("/images/bg/Day2.jpg"); }
+body.portfolio-bg .page__footer                          { background-image: url("/images/bg/DayLandscape.jpg"); }
 html[data-theme="dark"] body.portfolio-bg .masthead,
-html[data-theme="dark"] body.portfolio-bg .page__footer   { background-image: url("/images/bg/Night2.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .page__footer   { background-image: url("/images/bg/NightLandscape.jpg"); }
 
 /* CV / Resume */
 body.cv-bg .masthead,
-body.cv-bg .page__footer                                 { background-image: url("/images/bg/Day3.jpg"); }
+body.cv-bg .page__footer                                 { background-image: url("/images/bg/DayLandscape.jpg"); }
 html[data-theme="dark"] body.cv-bg .masthead,
-html[data-theme="dark"] body.cv-bg .page__footer          { background-image: url("/images/bg/Night3.jpg"); }
+html[data-theme="dark"] body.cv-bg .page__footer          { background-image: url("/images/bg/NightLandscape.jpg"); }
