@@ -285,33 +285,19 @@ html[data-theme="dark"] .page__footer::before {
 
 /* --- Per-page overrides (mirror the sidebar images exactly) --- */
 
-/* Home — reverse role: body carries the image, nav/footer revert to static theme colors */
+/* Home — strip the dynamic background entirely; use the same solid theme color as the sidebar */
 body.home-bg .masthead,
 body.home-bg .page__footer {
     background-image: none !important;
     background-color: var(--global-bg-color) !important;
-    background-attachment: unset !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    background-attachment: unset;
 }
-html[data-theme="dark"] body.home-bg .masthead,
-html[data-theme="dark"] body.home-bg .page__footer {
-    background-color: var(--global-bg-color) !important;
-}
-body.home-bg .page__footer {
-    background-color: var(--global-footer-bg-color) !important;
-}
-html[data-theme="dark"] body.home-bg .page__footer {
-    background-color: var(--global-footer-bg-color) !important;
-}
-
-/* Suppress the blur overlay on home nav/footer */
+/* Suppress the ::before blur/tint overlay — not needed over a solid color */
 body.home-bg .masthead::before,
 body.home-bg .page__footer::before {
     display: none !important;
 }
-
-/* No text shadow needed on plain theme-color backgrounds */
+/* No text shadow needed on a solid background */
 body.home-bg .masthead *,
 body.home-bg .page__footer * {
     text-shadow: none !important;
