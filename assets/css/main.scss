@@ -224,8 +224,7 @@ html[data-theme="dark"] .masthead::before {
     background: rgba(0, 0, 0, 0.40);
 }
 
-/* Strip every background in the nav so the blurred image shows through */
-.masthead,
+/* Strip backgrounds on nav children so the blurred image shows through */
 .masthead .greedy-nav,
 .masthead .greedy-nav button {
     background: transparent !important;
