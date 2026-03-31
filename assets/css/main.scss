@@ -114,3 +114,56 @@ html[data-theme="dark"] .sidebar.sticky::before {
 .sidebar.sticky * {
     text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
 }
+
+/* =====================================================
+   PER-PAGE CONTENT AREA BACKGROUNDS
+   Targets the main <article class="page"> element —
+   covers the content column only, leaving the sidebar,
+   masthead, and footer unaffected.
+   Light mode uses body.<page>-bg selector.
+   Dark mode adds html[data-theme="dark"] in front.
+   Swap out filenames below to change each page's bg.
+   ===================================================== */
+
+/* Base setup — applied whenever a content bg image is active */
+.page {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+/* Readability overlay (light mode) */
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Readability overlay (dark mode) */
+html[data-theme="dark"] .page::before {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Keep all page content above the overlay */
+.page > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- About Me --- */
+body.about-bg .page                               { background-image: url("/images/bg/DayLandscape.jpg"); }
+html[data-theme="dark"] body.about-bg .page       { background-image: url("/images/bg/NightLandscape.jpg"); }
+
+/* --- Portfolio --- */
+body.portfolio-bg .page                           { background-image: url("/images/bg/DayLandscape.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .page   { background-image: url("/images/bg/NightLandscape.jpg"); }
+
+/* --- CV / Resume --- */
+/* body.cv-bg .page                               { background-image: url("/images/bg/Day?.jpg"); } */
+/* html[data-theme="dark"] body.cv-bg .page       { background-image: url("/images/bg/Night?.jpg"); } */
