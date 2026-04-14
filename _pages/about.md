@@ -1,11 +1,9 @@
 ---
-permalink: /
+permalink: /about/
 title: "About Me"
 author_profile: true
 classes: about-bg
 redirect_from: 
-  - /about/
-  - /about.html
 ---
 
 A computer science major, studying at the University of Houston, who is very interested in getting his foothold in the field of Data & Analytics. 

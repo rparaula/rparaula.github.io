@@ -64,6 +64,80 @@
    Swap out the image filenames to change each page's bg.
    ===================================================== */
 
+/* --- Home --- */
+/* Background image covers the full body; sidebar uses theme colors */
+body.home-bg {
+    background-image: url("/images/bg/Day5.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html[data-theme="dark"] body.home-bg {
+    background-image: url("/images/bg/Night5.jpg");
+}
+
+/* Sidebar: strip the image, use theme colors instead */
+body.home-bg .sidebar.sticky {
+    background-image: none !important;
+    background-color: var(--global-bg-color) !important;
+    background-attachment: unset;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.20);
+}
+html[data-theme="dark"] body.home-bg .sidebar.sticky {
+    background-color: var(--global-bg-color) !important;
+}
+
+/* No text shadow needed — sidebar now sits on a plain theme-color background */
+body.home-bg .sidebar.sticky * {
+    text-shadow: none !important;
+}
+
+/* Suppress the readability overlay on the home-page sidebar */
+body.home-bg .sidebar.sticky::before {
+    display: none !important;
+}
+
+/* Center the sidebar in the viewport for the home page */
+body.home-bg #main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 80vh;
+}
+
+body.home-bg .sidebar.sticky {
+    position: relative !important;   /* override fixed so it participates in flex flow */
+    top: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    float: none !important;
+    width: auto !important;
+    min-width: 280px;
+    max-width: 380px;
+    flex: 0 0 auto;
+    margin: 3rem auto 0 !important;
+    padding: 2rem 1.75rem !important;
+    border-radius: 20px;
+    border: 1px solid var(--global-border-color);
+}
+
+/* Collapse the empty article area so the sidebar can truly center */
+body.home-bg article.page {
+    flex: 0 0 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* --- About Me --- */
 .sidebar.sticky.about-bg               { background-image: url("/images/bg/Day1.jpg"); }
 html[data-theme="dark"] .sidebar.sticky.about-bg { background-image: url("/images/bg/Night1.jpg"); }
@@ -109,3 +183,140 @@ html[data-theme="dark"] .sidebar.sticky::before {
     background: transparent !important;
     box-shadow: none !important;
 }
+
+/* Text shadows for readability against the dynamic background */
+.sidebar.sticky * {
+    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow);
+}
+
+/* =====================================================
+   NAV BAR + FOOTER SHARED BACKGROUND (WINDOW EFFECT)
+   Both elements use background-attachment: fixed with
+   the same per-page image so it looks like a single
+   image is visible through both sections as "windows."
+   ===================================================== */
+
+/* --- Masthead (nav bar) base setup --- */
+.masthead {
+    background-color: transparent;
+    background-image: url("/images/bg/DayLandscape.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html[data-theme="dark"] .masthead {
+    background-image: url("/images/bg/NightLandscape.jpg");
+}
+
+/* Readability overlay — sits behind nav links, blurs the image beneath it */
+.masthead::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+    z-index: 0;
+}
+html[data-theme="dark"] .masthead::before {
+    background: rgba(0, 0, 0, 0.40);
+}
+
+/* Strip every background in the nav so the blurred image shows through */
+.masthead,
+.masthead .greedy-nav,
+.masthead .greedy-nav button {
+    background: transparent !important;
+}
+
+/* Keep nav content above the overlay */
+.masthead__inner-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove the opaque per-item bg so the image shows through */
+.masthead__menu-item,
+.masthead__menu-item a {
+    background-color: transparent !important;
+}
+
+/* --- Footer base setup --- */
+.page__footer {
+    background-color: transparent;
+    background-image: url("/images/bg/DayLandscape.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+html[data-theme="dark"] .page__footer {
+    background-image: url("/images/bg/NightLandscape.jpg");
+}
+
+/* Readability overlay — sits behind footer content, blurs the image beneath it */
+.page__footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+    z-index: 0;
+}
+html[data-theme="dark"] .page__footer::before {
+    background: rgba(0, 0, 0, 0.40);
+}
+
+/* Keep footer content above the overlay */
+.page__footer > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Text readability against the dynamic background */
+.masthead *,
+.page__footer * {
+    text-shadow: 0 1px 3px var(--global-sidebar-text-shadow, rgba(0, 0, 0, 0.4));
+}
+
+/* --- Per-page overrides (mirror the sidebar images exactly) --- */
+
+/* Home — strip the dynamic background entirely; use the same solid theme color as the sidebar */
+body.home-bg .masthead,
+body.home-bg .page__footer {
+    background-image: none !important;
+    background-color: var(--global-bg-color) !important;
+    background-attachment: unset;
+}
+/* Suppress the ::before blur/tint overlay — not needed over a solid color */
+body.home-bg .masthead::before,
+body.home-bg .page__footer::before {
+    display: none !important;
+}
+/* No text shadow needed on a solid background */
+body.home-bg .masthead *,
+body.home-bg .page__footer * {
+    text-shadow: none !important;
+}
+
+/* About Me */
+body.about-bg .masthead,
+body.about-bg .page__footer                              { background-image: url("/images/bg/DayLandscape.jpg"); }
+html[data-theme="dark"] body.about-bg .masthead,
+html[data-theme="dark"] body.about-bg .page__footer       { background-image: url("/images/bg/NightLandscape.jpg"); }
+
+/* Portfolio */
+body.portfolio-bg .masthead,
+body.portfolio-bg .page__footer                          { background-image: url("/images/bg/DayLandscape.jpg"); }
+html[data-theme="dark"] body.portfolio-bg .masthead,
+html[data-theme="dark"] body.portfolio-bg .page__footer   { background-image: url("/images/bg/NightLandscape.jpg"); }
+
+/* CV / Resume */
+body.cv-bg .masthead,
+body.cv-bg .page__footer                                 { background-image: url("/images/bg/DayLandscape.jpg"); }
+html[data-theme="dark"] body.cv-bg .masthead,
+html[data-theme="dark"] body.cv-bg .page__footer          { background-image: url("/images/bg/NightLandscape.jpg"); }

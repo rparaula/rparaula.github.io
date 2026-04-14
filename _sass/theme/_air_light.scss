@@ -11,8 +11,9 @@ $light-primary-color        : mix(#000, $primary-color, 50%);
 $background                 : #eeeeee;
 $background-light           : mix(#fff, $background, 20%);
 $background-lighter         : mix(#fff, $background, 90%);
-$text                       : #222831;
-$link                       : #393e46;
+$text                       : #A67552;
+$link                       : #C09A7F;
+$sidebar-text-shadow        : rgba(0, 0, 0, 0.75);
 $link-dark                  : mix(#000, $link, 25%);
 $link-light                 : mix(#fff, $link, 25%);
 $footer                     : $primary-color;
@@ -52,4 +53,5 @@ $sidebar-screen-min-width   : 1024px;
     --global-text-color                 : #{$text};
     --global-text-color-light           : #{$light-primary-color};
     --global-thead-color                : #{$background-lighter};
+    --global-sidebar-text-shadow        : #{$sidebar-text-shadow};
 }
