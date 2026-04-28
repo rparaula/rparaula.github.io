@@ -6,9 +6,9 @@ classes: about-bg
 redirect_from: 
 ---
 
-A computer science major, studying at the University of Houston, who is very interested in getting his foothold in the field of Data & Analytics. 
+Analytical and detail‑driven Computer Science major with a Data Science minor at the University of Houston, specializing in transforming complex datasets into actionable insights. 
 
-Whether it be creating dashboards/reports from existing data, maintaining a data warehouse or lakehouse, or experimenting with various machine learning models. I'm always interested in learning something new for my career every day.
+Experienced in building data pipelines, developing interactive dashboards, and applying machine learning models to real‑world problems. Known for strong problem‑solving skills, clear communication, and the ability to quickly learn new tools and technologies. Seeking an opportunity to contribute to a data‑driven team and grow within the fields of Data Engineering, Analytics, or Machine Learning. All fueled by an immense love of caffine.
 
 Resume
 ======
@@ -21,22 +21,7 @@ Resume
 
 
 
-Projects
+Coffee
 ======
--- Add Projects Here --
+-- WIP --
 
-Think about more stuff to header
-------
-Idek what to add...
-
-Stuff...
-------
-Stuff to add here as well.
-
-More Stuff...
-------
-Stuff to add here
-
-And even more stuff...
-------
-Stuff
