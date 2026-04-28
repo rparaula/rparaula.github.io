@@ -35,5 +35,5 @@ main:
   - title: "Coffee"
     url: /coffee/
     
-  - title: "Guide"
-    url: /markdown/
+ #  - title: "Guide"
+ #    url: /markdown/
