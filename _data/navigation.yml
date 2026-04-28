@@ -31,6 +31,9 @@ main:
     
   # - title: "CV"
   #   url: /cv-json/
+
+  - title: "Coffee"
+    url: /coffee/
     
   - title: "Guide"
     url: /markdown/

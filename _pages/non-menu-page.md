@@ -1,10 +1,10 @@
 ---
-permalink: /non-menu-page/
-title: "Page not in menu"
+permalink: /Coffee/
+title: "What many consider the elixir of life"
 author_profile: true
 redirect_from: 
-  - "/nmp/"
-  - "/nmp.html"
+  - "/coffee/"
+  - "/ElixirOfLife"
 ---
 
 This is a page not in the menu. You can use markdown in this page.
