@@ -19,6 +19,16 @@ Education
 <!-- Work experience (Add more stuff here later) -->
 
 
+Certifications
+=====
+* Microsoft Azure AI Fundamentals
+* Microsoft Azure Data Fundamentals
+* Tableau Desktop Specialist
+* Microsoft Power BI Data Analyst Associate (Pending)
+* AWS Certified Cloud Practioner (Pending)
+
+
+
   
 Skills
 ======
@@ -45,4 +55,5 @@ Teaching
   
 Service and leadership
 ======
-* Helped found the UH Men's Volleyball Club and server as the first VP after covid.
+* Helped found the UH Men's Volleyball Club and server as the first Vice-President after Covid.
+* Was Vice-President of high school's SkillUSA club.
